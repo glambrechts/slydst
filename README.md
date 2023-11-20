@@ -19,6 +19,7 @@ To start, just use the following preamble (only the title is required).
   date: none,
   authors: (),
   layout: "medium",
+  ratio: 4/3,
   title-color: none,
 )
 
@@ -64,11 +65,10 @@ Definitions, theorems, lemmas, corollaries and algorithms boxes are also availab
 - `title`: `str` - title (required)
 - `subtitle`: `str` - subtitle
 - `date`: `str` - date
-- `authors`: `array` - list of authors
+- `authors`: `array` of `content` or `content` - list of authors or author content
 - `layout`: `str in ("small", "medium", "large")` - layout selection
+- `ratio`: `float` or `ratio` or `int` - width to height ratio
 - `title-color`: `color` or `gradient` - color of title and headings
-- `cite-color`: `color` or `gradient` - color of citations and references
-- `math-color`: `color` or `gradient` - color of maths
 
 ### `definition`, `theorem`, `lemma`, `corollary`, `algorithm`
 

@@ -13,7 +13,7 @@
   title: none,
   subtitle: none,
   date: none,
-  authors: [],
+  authors: (),
   layout: "medium",
   ratio: 4/3,
   title-color: none,
@@ -84,6 +84,9 @@
     panic("A title is required")
   }
   else {
+    if (type(authors) != array) {
+      authors = (authors,)
+    }
     set page(footer: none)
     set align(horizon)
     v(- space / 2)

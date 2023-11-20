@@ -4,7 +4,7 @@
 
 #show: slides.with(
   title: "Slydst: Slides in Typst",
-  authors: ("Gaspard Lambrechts",),
+  authors: "Gaspard Lambrechts",
 )
 
 #show raw: set block(fill: silver.lighten(65%), width: 100%, inset: 1em)
@@ -28,6 +28,7 @@ To start, just use the following preamble.
   date: none,
   authors: (),
   layout: "medium",
+  ratio: 4/3,
   title-color: none,
 )
 

@@ -22,7 +22,7 @@ To start, just use the following preamble.
 ```typst
 #import "@preview/slydst:0.1.0": *
 
-#show slides.with(
+#show: slides.with(
   title: "Insert your title here", // Required
   subtitle: none,
   date: none,

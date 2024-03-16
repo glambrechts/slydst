@@ -1,4 +1,4 @@
-#import "@preview/slydst:0.1.0": *
+#import "slydst.typ": *
 
 #set page(fill: white)
 
@@ -58,6 +58,10 @@ Insert your content here.
 ```
 
 ...and longer slides are automatically numbered.
+
+=== Subsubtitles
+
+Note that level-three headings do not break pages.
 
 = Components
 

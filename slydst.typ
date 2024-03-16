@@ -40,22 +40,21 @@
     width: width,
     height: height,
     margin: (x: 0.5 * space, top: space, bottom: 0.6 * space),
-    header: locate(loc => {
-      let page = loc.page()
-      let selection = heading.where(level: 2).or(heading.where(level: 1))
-      let headings = query(selector(selection), loc)
+    header: context {
+      let page = here().page()
+      let headings = query(selector(heading.where(level: 2)))
       let heading = headings.rev().find(x => x.location().page() <= page)
-      if heading != none and not heading.level == 1 {
-        set text(1.4em, weight: "bold", fill: title-color)
+      if heading != none {
         set align(top)
+        set text(1.4em, weight: "bold", fill: title-color)
         v(space / 2)
         block(heading.body +
-          if not heading.location().page() == loc.page() [
-            #{numbering("(i)", loc.page() - heading.location().page() + 1)}
+          if not heading.location().page() == page [
+            #{numbering("(i)", page - heading.location().page() + 1)}
           ]
         )
       }
-    }),
+    },
     header-ascent: 0%,
     footer: [
       #set text(0.8em)
@@ -73,9 +72,13 @@
   )
 
   // Rules
-  show heading.where(level: 1): set align(center + horizon)
-  show heading.where(level: 1): set text(1.2em)
-  show heading.where(level: 1): x => pagebreak(weak: true) + v(- space / 2) + x
+  show heading.where(level: 1): x => {
+    set page(header: none, footer: none)
+    set align(center + horizon)
+    set text(1.2em, weight: "bold", fill: title-color)
+    v(- space / 2)
+    x.body
+  }
   show heading.where(level: 2): pagebreak(weak: true)
   show heading: set text(1.1em, fill: title-color)
 

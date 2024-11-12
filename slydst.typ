@@ -8,6 +8,15 @@
   "large": ("height": 12cm, "space": 1.8cm),
 )
 
+#let title-page(content, layout: "medium") = {
+    set page(footer: none)
+    set align(horizon)
+    let space = layouts.at(layout).at("space")
+    v(- space / 2)
+    content
+    pagebreak(weak: true)
+}
+
 #let slides(
   content,
   title: none,
@@ -31,7 +40,9 @@
   }
 
   // Setup
-  set document(title: title, author: authors)
+  if title != none {
+    set document(title: title, author: authors)
+  }
   set page(
     width: width,
     height: height,
@@ -72,22 +83,19 @@
   show heading: set text(1.1em, fill: title-color)
 
   // Title
-  if (title == none) {
-    panic("A title is required")
-  } else {
+  if title != none {
     if (type(authors) != array) {
       authors = (authors,)
     }
-    set page(footer: none)
-    set align(horizon)
-    v(- space / 2)
-    text(2.0em, weight: "bold", fill: title-color, title)
-    v(1.4em, weak: true)
-    if subtitle != none { text(1.1em, weight: "bold", subtitle) }
-    if subtitle != none and date != none { text(1.1em)[ \- ] }
-    if date != none { text(1.1em, date) }
-    v(1em, weak: true)
-    align(left, authors.join(", ", last: " and "))
+    title-page[
+      #text(2.0em, weight: "bold", fill: title-color, title)
+      #v(1.4em, weak: true)
+      #if subtitle != none { text(1.1em, weight: "bold", subtitle) }
+      #if subtitle != none and date != none { text(1.1em)[ \- ] }
+      #if date != none { text(1.1em, date) }
+      #v(1em, weak: true)
+      #align(left, authors.join(", ", last: " and "))
+    ]
   }
 
   // Content

@@ -14,10 +14,10 @@ To start, just use the following preamble (only the title is required).
 #import "@preview/slydst:0.1.1": *
 
 #show: slides.with(
-  title: "Insert your title here", // Required
+  title: "Slydst: Slides with Typst",
   subtitle: none,
   date: none,
-  authors: (),
+  authors: ("Gaspard Lambrechts",),
   layout: "medium",
   ratio: 4/3,
   title-color: none,
@@ -45,6 +45,33 @@ Then, insert your content.
 #v(1fr)
 
 #lorem(20)
+```
+
+## Title page
+
+Alternatively, you can omit the title and write your own title page.
+Note that the subtitle, date and authors arguments be ignored in that case.
+
+```typst
+#show: slides.with(
+  layout: "medium",
+)
+
+#align(center + horizon)[
+  #text(2em, default-color)[*Slydst: Slides in Typst*]
+]
+```
+
+We advise the use of the `title-page` function that ensures a proper centering and no page numbering.
+
+```typst
+#show: slides.with(
+  layout: "medium",
+)
+
+#title-page[
+  #text(2em, default-color)[*Slydst: Slides in Typst*]
+]
 ```
 
 ## Components

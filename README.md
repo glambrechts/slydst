@@ -11,7 +11,7 @@ For more complete and complex slides functionalities, see other tools such as Po
 To start, just use the following preamble (only the title is required).
 
 ```typst
-#import "@preview/slydst:0.1.1": *
+#import "@preview/slydst:0.1.2": *
 
 #show: slides.with(
   title: "Slydst: Slides with Typst",

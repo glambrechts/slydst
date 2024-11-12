@@ -1,11 +1,8 @@
-#import "slydst.typ": *
-
-#set page(fill: white)
+#import "@preview/slydst:0.1.2": *
 
 #show: slides.with(
   title: "Slydst: Slides in Typst",
   authors: "Gaspard Lambrechts",
-  title-color: default-color,
 )
 
 #show raw: set block(fill: silver.lighten(65%), width: 100%, inset: 1em)

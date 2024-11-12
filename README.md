@@ -101,6 +101,9 @@ Definitions, theorems, lemmas, corollaries and algorithms boxes are also availab
 
 - `content`: `content` - content of the block
 - `title`: `str` - title of the block
+- `fill-header`: `color` - color of the header (inferred if only `fill-body` is specified)
+- `fill-body`: `color` - color of the body (inferred if only `fill-header` is specified)
+- `radius`: `length` - radius of the corners of the block
 
 ## Example
 

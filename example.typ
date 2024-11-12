@@ -5,6 +5,7 @@
 #show: slides.with(
   title: "Slydst: Slides in Typst",
   authors: "Gaspard Lambrechts",
+  title-color: default-color,
 )
 
 #show raw: set block(fill: silver.lighten(65%), width: 100%, inset: 1em)
@@ -71,7 +72,7 @@ Note that level-three headings do not break pages.
   #lorem(10)
 ]
 
-#theorem(title: "An interesting theorem")[
+#theorem(title: "An interesting theorem", fill-header: orange.lighten(65%), radius: 0.2em)[
   Let $p(x, y)$ a probability distribution, we have,
   $
     p(x, y) = p(x) p(y | x)

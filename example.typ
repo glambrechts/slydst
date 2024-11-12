@@ -75,7 +75,7 @@ Note that level-three headings do not break pages.
 #theorem(title: "An interesting theorem", fill-header: orange.lighten(65%), radius: 0.2em)[
   Let $p(x, y)$ a probability distribution, we have,
   $
-    p(x, y) = p(x) p(y | x)
+    p(x, y) &= p(x) p(y | x).
   $
 ]
 

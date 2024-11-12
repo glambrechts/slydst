@@ -5,12 +5,12 @@
   "medium": ("height": 10.5cm, "space": 1.6cm),
   "large": ("height": 12cm, "space": 1.8cm),
 )
+#let layout-space = state("space", v(-0.8cm))
 
-#let title-page(content, layout: "medium") = {
+#let title-page(content) = {
     set page(footer: none)
     set align(horizon)
-    let space = layouts.at(layout).at("space")
-    v(- space / 2)
+    context layout-space.get()
     content
     pagebreak(weak: true)
 }
@@ -31,6 +31,7 @@
   }
   let (height, space) = layouts.at(layout)
   let width = ratio * height
+  layout-space.update(v(- space / 2))
 
   // Colors
   if title-color == none {

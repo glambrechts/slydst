@@ -6,6 +6,8 @@ Slydst allows the creation of slides using Typst headings.
 This simplicity comes at the expense of dynamic content such as subslide animations.
 For more complete and complex slides functionalities, see other tools such as Polylux.
 
+See the [preview](#example) below.
+
 ## Usage
 
 To start, just use the following preamble (only the title is required).

@@ -10,3 +10,8 @@ repository = "https://github.com/glambrechts/slydst"
 keywords = ["slides", "diapositives", "presentation"]
 categories = ["presentation", "layout", "components"]
 exclude = ["svg", "example.typ"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

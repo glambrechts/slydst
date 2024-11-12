@@ -53,7 +53,9 @@ Alternatively, you can omit the title argument and write your own title page.
 Note that the subtitle, date and authors arguments be ignored in that case.
 
 ```typst
-#show: slides
+#show: slides.with(
+  layout: "medium",
+)
 
 #align(center + horizon)[
   #text(2em, default-color)[*Slydst: Slides in Typst*]
@@ -65,9 +67,7 @@ Insert your content here.
 We advise the use of the `title-page` function that ensures a proper centering and no page numbering.
 
 ```typst
-#show: slides.with(
-  layout: "medium",
-)
+#show: slides
 
 #title-page(layout: "medium")[
   #text(2em, default-color)[*Slydst: Slides in Typst*]
@@ -102,7 +102,6 @@ Definitions, theorems, lemmas, corollaries and algorithms boxes are also availab
 ### `title-slide`
 
 - `content`: `content` - content of the slide
-- `layout`: `str in ("small", "medium", "large")` - layout selection for perfect centering
 
 ### `definition`, `theorem`, `lemma`, `corollary`, `algorithm`
 

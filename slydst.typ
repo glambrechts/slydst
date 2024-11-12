@@ -1,6 +1,4 @@
 #let default-color = blue.darken(40%)
-#let header-color = default-color.lighten(75%)
-#let body-color = default-color.lighten(85%)
 
 #let layouts = (
   "small": ("height": 9cm, "space": 1.4cm),
@@ -102,8 +100,24 @@
   content
 }
 
-#let frame(content, counter: none, title: none) = {
+#let frame(content, counter: none, title: none, fill-body: none, fill-header: none, radius: 0.2em) = {
   let header = none
+
+  if fill-header == none and fill-body == none {
+    fill-header = default-color.lighten(75%)
+    fill-body = default-color.lighten(85%)
+  }
+  else if fill-header == none {
+    fill-header = fill-body.darken(10%)
+  }
+  else if fill-body == none {
+    fill-body = fill-header.lighten(50%)
+  }
+
+  if radius == none {
+    radius = 0pt
+  }
+
   if counter == none and title != none {
     header = [*#title.*]
   } else if counter != none and title == none {
@@ -116,37 +130,62 @@
   show stack: set block(breakable: false, above: 0.8em, below: 0.5em)
 
   stack(
-    block(fill: header-color, radius: (top: 0.2em, bottom: 0cm), header),
-    block(fill: body-color, radius: (top: 0cm, bottom: 0.2em), content),
+    block(fill: fill-header, radius: (top: radius, bottom: 0cm), header),
+    block(fill: fill-body, radius: (top: 0cm, bottom: radius), content),
   )
 }
 
 #let d = counter("definition")
-#let definition(content, title: none) = {
+#let definition(content, title: none, ..options) = {
   d.step()
-  frame(counter: context d.display(x => "Definition " + str(x)), title: title, content)
+  frame(
+    counter: context d.display(x => "Definition " + str(x)),
+    title: title,
+    content,
+    ..options,
+  )
 }
 
 #let t = counter("theorem")
-#let theorem(content, title: none) = {
+#let theorem(content, title: none, ..options) = {
   t.step()
-  frame(counter: context t.display(x => "Theorem " + str(x)), title: title, content)
+  frame(
+    counter: context t.display(x => "Theorem " + str(x)),
+    title: title,
+    content,
+    ..options,
+  )
 }
 
 #let l = counter("lemma")
-#let lemma(content, title: none) = {
+#let lemma(content, title: none, ..options) = {
   l.step()
-  frame(counter: context l.display(x => "Lemma " + str(x)), title: title, content)
+  frame(
+    counter: context l.display(x => "Lemma " + str(x)),
+    title: title,
+    content,
+    ..options,
+  )
 }
 
 #let c = counter("corollary")
-#let corollary(content, title: none) = {
+#let corollary(content, title: none, ..options) = {
   c.step()
-  frame(counter: context c.display(x => "Corollary " + str(x)), title: title, content)
+  frame(
+    counter: context c.display(x => "Corollary " + str(x)),
+    title: title,
+    content,
+    ..options,
+  )
 }
 
 #let a = counter("algorithm")
-#let algorithm(content, title: none) = {
+#let algorithm(content, title: none, ..options) = {
   a.step()
-  frame(counter: context a.display(x => "Algorithm " + str(x)), title: title, content)
+  frame(
+    counter: context a.display(x => "Algorithm " + str(x)),
+    title: title,
+    content,
+    ..options,
+  )
 }

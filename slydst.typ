@@ -127,12 +127,23 @@
     header = [*#counter:* #title.]
   }
 
-  set block(width: 100%, inset: (x: 0.4em, top: 0.35em, bottom: 0.45em))
   show stack: set block(breakable: false, above: 0.8em, below: 0.5em)
 
   stack(
-    block(fill: fill-header, radius: (top: radius, bottom: 0cm), header),
-    block(fill: fill-body, radius: (top: 0cm, bottom: radius), content),
+    block(
+      width: 100%,
+      inset: (x: 0.4em, top: 0.35em, bottom: 0.45em),
+      fill: fill-header,
+      radius: (top: radius, bottom: 0cm),
+      header,
+    ),
+    block(
+      width: 100%,
+      inset: (x: 0.4em, top: 0.35em, bottom: 0.45em),
+      fill: fill-body,
+      radius: (top: 0cm, bottom: radius),
+      content,
+    ),
   )
 }
 

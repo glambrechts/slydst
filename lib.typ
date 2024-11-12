@@ -1,1 +1,1 @@
-#import "slydst.typ": slides, frame, definition, theorem, lemma, corollary, algorithm
+#import "slydst.typ": slides, title-slide, frame, definition, theorem, lemma, corollary, algorithm

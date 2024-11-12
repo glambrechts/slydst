@@ -15,7 +15,7 @@
   date: none,
   authors: (),
   layout: "medium",
-  ratio: 4 / 3,
+  ratio: 4/3,
   title-color: none,
 ) = {
   // Parsing
@@ -81,9 +81,13 @@
     set page(footer: none)
     set align(horizon)
     v(- space / 2)
-    block(
-      text(2.0em, weight: "bold", fill: title-color, title) + v(1.4em, weak: true) + if subtitle != none { text(1.1em, weight: "bold", subtitle) } + if subtitle != none and date != none { text(1.1em)[ \- ] } + if date != none { text(1.1em, date) } + v(1em, weak: true) + align(left, authors.join(", ", last: " and ")),
-    )
+    text(2.0em, weight: "bold", fill: title-color, title)
+    v(1.4em, weak: true)
+    if subtitle != none { text(1.1em, weight: "bold", subtitle) }
+    if subtitle != none and date != none { text(1.1em)[ \- ] }
+    if date != none { text(1.1em, date) }
+    v(1em, weak: true)
+    align(left, authors.join(", ", last: " and "))
   }
 
   // Content

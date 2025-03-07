@@ -1,4 +1,4 @@
-#import "@preview/slydst:0.1.3": *
+#import "@preview/slydst:0.1.4": *
 
 #show: slides.with(
   title: "Slydst: Slides in Typst",
@@ -19,7 +19,7 @@
 To start, just use the following preamble.
 
 ```typst
-#import "@preview/slydst:0.1.3": *
+#import "@preview/slydst:0.1.4": *
 
 #show: slides.with(
   title: "Insert your title here", // Required

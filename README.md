@@ -23,7 +23,7 @@ Or [select the Slydst template](https://typst.app/universe/package/slydst) in th
 To start, just use the following preamble (only the title is required).
 
 ```typst
-#import "@preview/slydst:0.1.3": *
+#import "@preview/slydst:0.1.4": *
 
 #show: slides.with(
   title: "Slydst: Slides with Typst",

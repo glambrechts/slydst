@@ -8,6 +8,16 @@ For more complete and complex slides functionalities, see other tools such as Po
 
 See the [preview](#example) below.
 
+## Quick start
+
+Just use the following command.
+
+```bash
+typst init @preview/slydst directory
+```
+
+Or [select the Slydst template](https://typst.app/universe/package/slydst) in the Typst app.
+
 ## Usage
 
 To start, just use the following preamble (only the title is required).

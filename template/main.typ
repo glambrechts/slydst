@@ -2,6 +2,7 @@
 
 #show: slides.with(
   title: "Slydst: Slides in Typst",
+  subtitle: "A Simple Package",
   authors: "Gaspard Lambrechts",
 )
 

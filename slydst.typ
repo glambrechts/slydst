@@ -93,7 +93,11 @@
       #if subtitle != none and date != none { text(1.1em)[ \- ] }
       #if date != none { text(1.1em, date) }
       #v(1em, weak: true)
-      #align(left, authors.join(", ", last: " and "))
+      #if subtitle != none or date != none {
+        place(bottom, authors.join(", ", last: " and "))
+      } else {
+        align(left, authors.join(", ", last: " and "))
+      }
     ]
   }
 

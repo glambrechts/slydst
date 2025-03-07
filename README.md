@@ -52,7 +52,7 @@ Then, insert your content.
 ## Title page
 
 Alternatively, you can omit the title argument and write your own title page.
-Note that the subtitle, date and authors arguments be ignored in that case.
+Note that the subtitle, date and authors arguments will be ignored in that case.
 
 ```typst
 #show: slides.with(
@@ -71,7 +71,7 @@ We advise the use of the `title-slide` function that ensures a proper centering 
 ```typst
 #show: slides
 
-#title-slide(layout: "medium")[
+#title-slide[
   #text(2em, default-color)[*Slydst: Slides in Typst*]
 ]
 

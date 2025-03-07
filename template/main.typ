@@ -18,7 +18,7 @@
 To start, just use the following preamble.
 
 ```typst
-#import "@preview/slydst:0.1.2": *
+#import "@preview/slydst:0.1.3": *
 
 #show: slides.with(
   title: "Insert your title here", // Required

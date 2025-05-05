@@ -1,9 +1,10 @@
-#import "@preview/slydst:0.1.4": *
+#import "@preview/slydst:0.1.5": *
 
 #show: slides.with(
   title: "Slydst: Slides in Typst",
   subtitle: "A Simple Package",
   authors: "Gaspard Lambrechts",
+  subslide-numbering: "(i)",
 )
 
 #show raw: set block(fill: silver.lighten(65%), width: 100%, inset: 1em)
@@ -29,6 +30,7 @@ To start, just use the following preamble.
   layout: "medium",
   ratio: 4/3,
   title-color: none,
+  subslide-numbering: none,
 )
 
 Insert your content here.
@@ -56,7 +58,7 @@ Insert your content here.
 #lorem(20)
 ```
 
-...and longer slides are automatically numbered.
+...and longer slides can be automatically numbered.
 
 === Subsubtitles
 

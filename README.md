@@ -23,7 +23,7 @@ Or [select the Slydst template](https://typst.app/universe/package/slydst) in th
 To start, just use the following preamble (only the title is required).
 
 ```typst
-#import "@preview/slydst:0.1.4": *
+#import "@preview/slydst:0.1.5": *
 
 #show: slides.with(
   title: "Slydst: Slides with Typst",
@@ -33,6 +33,7 @@ To start, just use the following preamble (only the title is required).
   layout: "medium",
   ratio: 4/3,
   title-color: none,
+  subslide-numbering: none,
 )
 
 Insert your content here.
@@ -110,6 +111,7 @@ Definitions, theorems, lemmas, corollaries and algorithms boxes are also availab
 - `layout`: `str in ("small", "medium", "large")` - layout selection
 - `ratio`: `float` or `ratio` or `int` - width to height ratio
 - `title-color`: `color` or `gradient` - color of title and headings
+- `subslide-numbering:`: `none`or `str` - numbering of subslides,
 
 ### `title-slide`
 

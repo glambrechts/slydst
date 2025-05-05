@@ -1,6 +1,6 @@
 [package]
 name = "slydst"
-version = "0.1.4"
+version = "0.1.5"
 compiler = "0.12.0"
 entrypoint = "lib.typ"
 authors = ["Gaspard Lambrechts <https://github.com/glambrechts>"]

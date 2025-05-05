@@ -7,6 +7,11 @@
 )
 #let layout-space = state("space", v(-0.8cm))
 
+#show outline.entry: it => {
+  show linebreak: [ ]
+  it
+}
+
 #let title-slide(content) = {
     set page(footer: none)
     set align(horizon)
@@ -24,6 +29,7 @@
   layout: "medium",
   ratio: 4/3,
   title-color: none,
+  subslide-numbering: none,
 ) = {
   // Parsing
   if layout not in layouts {
@@ -54,8 +60,8 @@
         set align(top)
         set text(1.4em, weight: "bold", fill: title-color)
         v(space / 2)
-        block(heading.body + if not heading.location().page() == page [
-          #{ numbering("(i)", page - heading.location().page() + 1) }
+        block(heading.body + if not heading.location().page() == page and subslide-numbering != none [
+          #{ numbering(subslide-numbering, page - heading.location().page() + 1) }
         ])
       }
     },
@@ -68,6 +74,7 @@
     footer-descent: 0.8em,
   )
   set outline(target: heading.where(level: 1), title: none)
+
   set bibliography(title: none)
 
   // Rules
@@ -136,14 +143,14 @@
   stack(
     block(
       width: 100%,
-      inset: (x: 0.4em, top: 0.35em, bottom: 0.45em),
+      inset: (x: 0.6em, top: 0.35em, bottom: 0.45em),
       fill: fill-header,
       radius: (top: radius, bottom: 0cm),
       header,
     ),
     block(
       width: 100%,
-      inset: (x: 0.4em, top: 0.35em, bottom: 0.45em),
+      inset: (x: 0.6em, top: 0.45em, bottom: 0.45em),
       fill: fill-body,
       radius: (top: 0cm, bottom: radius),
       content,

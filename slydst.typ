@@ -79,13 +79,14 @@
 
   // Rules
   show heading.where(level: 1): x => {
+    pagebreak()
     set page(header: none, footer: none)
     set align(center + horizon)
     set text(1.2em, weight: "bold", fill: title-color)
     v(- space / 2)
     x.body
   }
-  show heading.where(level: 2): pagebreak(weak: true)
+  show heading.where(level: 2): pagebreak()
   show heading: set text(1.1em, fill: title-color)
 
   // Title

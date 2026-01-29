@@ -7,17 +7,22 @@
 )
 #let layout-space = state("space", v(-0.8cm))
 
+#let page-numberings = (
+  "double": ("format": "1/1", "both": true),
+  "single": ("format": "1", "both": false),
+)
+
 #show outline.entry: it => {
   show linebreak: [ ]
   it
 }
 
 #let title-slide(content) = {
-    set page(footer: none)
-    set align(horizon)
-    context layout-space.get()
-    content
-    pagebreak(weak: true)
+  set page(footer: none)
+  set align(horizon)
+  context layout-space.get()
+  content
+  pagebreak(weak: true)
 }
 
 #let slides(
@@ -30,10 +35,14 @@
   ratio: 4/3,
   title-color: none,
   subslide-numbering: none,
+  page-numbering: "double",
 ) = {
   // Parsing
   if layout not in layouts {
     panic("Unknown layout " + layout)
+  }
+  if page-numbering not in page-numberings {
+    panic("Unknown page numbering option " + page-numbering)
   }
   let (height, space) = layouts.at(layout)
   let width = ratio * height
@@ -61,7 +70,7 @@
         set text(1.4em, weight: "bold", fill: title-color)
         v(space / 2)
         block(heading.body + if not heading.location().page() == page and subslide-numbering != none [
-          #{ numbering(subslide-numbering, page - heading.location().page() + 1) }
+              #{ numbering(subslide-numbering, page - heading.location().page() + 1) }
         ])
       }
     },
@@ -69,7 +78,8 @@
     footer: [
       #set text(0.8em)
       #set align(right)
-      #context counter(page).display("1/1", both: true)
+      #let (format, both) = page-numberings.at(page-numbering)
+      #context counter(page).display(format, both: both)
     ],
     footer-descent: 0.8em,
   )

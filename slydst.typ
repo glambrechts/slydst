@@ -7,17 +7,22 @@
 )
 #let layout-space = state("space", v(-0.8cm))
 
+#let slide-numberings = (
+  "double": ("format": "1/1", "both": true),
+  "single": ("format": "1", "both": false),
+)
+
 #show outline.entry: it => {
   show linebreak: [ ]
   it
 }
 
 #let title-slide(content) = {
-    set page(footer: none)
-    set align(horizon)
-    context layout-space.get()
-    content
-    pagebreak(weak: true)
+  set page(footer: none)
+  set align(horizon)
+  context layout-space.get()
+  content
+  pagebreak(weak: true)
 }
 
 #let slides(
@@ -29,11 +34,15 @@
   layout: "medium",
   ratio: 4/3,
   title-color: none,
+  slide-numbering: "double",
   subslide-numbering: none,
 ) = {
   // Parsing
   if layout not in layouts {
     panic("Unknown layout " + layout)
+  }
+  if slide-numbering != none and slide-numbering not in slide-numberings {
+    panic("Unknown slide numbering option " + slide-numbering)
   }
   let (height, space) = layouts.at(layout)
   let width = ratio * height
@@ -52,7 +61,7 @@
     width: width,
     height: height,
     margin: (x: 0.5 * space, top: space, bottom: 0.6 * space),
-    header: context{
+    header: context {
       let page = here().page()
       let headings = query(selector(heading.where(level: 2)))
       let heading = headings.rev().find(x => x.location().page() <= page)
@@ -61,15 +70,18 @@
         set text(1.4em, weight: "bold", fill: title-color)
         v(space / 2)
         block(heading.body + if not heading.location().page() == page and subslide-numbering != none [
-          #{ numbering(subslide-numbering, page - heading.location().page() + 1) }
-        ])
+              #{ numbering(subslide-numbering, page - heading.location().page() + 1) }
+            ])
       }
     },
     header-ascent: 0%,
     footer: [
-      #set text(0.8em)
-      #set align(right)
-      #context counter(page).display("1/1", both: true)
+      #if slide-numbering != none {
+        set text(0.8em)
+        set align(right)
+        let (format, both) = slide-numberings.at(slide-numbering)
+        context counter(page).display(format, both: both)
+      }
     ],
     footer-descent: 0.8em,
   )
